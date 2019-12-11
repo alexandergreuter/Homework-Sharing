@@ -62,4 +62,8 @@ export class HomeworkDetailComponent implements OnInit {
         dialogs.alert("Changes saved successfully");
         this._routerExtensions.back();
     }
+
+    previewImage() {
+        this._routerExtensions.navigate(["image"], {relativeTo: this._route});
+    }
 }
