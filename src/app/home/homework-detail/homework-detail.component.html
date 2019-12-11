@@ -1,0 +1,16 @@
+<ActionBar>
+    <NavigationButton (tap)="navigateBack()" android.systemIcon="ic_menu_back"></NavigationButton>
+    <Label [text]="item.name"></Label>
+</ActionBar>
+
+<GridLayout>
+    <DockLayout stretchLastChild="false">
+        <stack-layout orientation="vertical" dock="top">
+            <TextField [(ngModel)]="changes.description" (tap)="changed = true" hint="Add Description"></TextField>
+        </stack-layout>
+        <stack-layout *ngIf="changed" orientation="horizontal" dock="bottom">
+            <Button width="180" text="Save changes" (tap)="save()"></Button>
+            <Button width="180" text="Abort changes" (tap)="navigateBack()" dock="bottom"></Button>
+        </stack-layout>
+    </DockLayout>
+</GridLayout>

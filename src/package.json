@@ -1,0 +1,22 @@
+{
+  "main": "main.js",
+  "android": {
+    "v8Flags": "--expose_gc",
+    "markingMode": "none"
+  },
+  "dependencies": {
+    "@angular/animations": "^8.2.14",
+    "@angular/common": "^8.2.14",
+    "@angular/compiler": "^8.2.14",
+    "@angular/core": "^8.2.14",
+    "@angular/platform-browser": "^8.2.14",
+    "@angular/platform-browser-dynamic": "^8.2.14",
+    "@angular/platform-server": "^8.2.14",
+    "@nguniversal/express-engine": "^7.1.1",
+    "@schematics/angular": "^8.3.20",
+    "angular": "^1.7.9",
+    "express": "^4.17.1",
+    "rxjs": "^6.5.3",
+    "zone.js": "^0.9.1"
+  }
+}
