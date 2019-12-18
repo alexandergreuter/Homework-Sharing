@@ -128,7 +128,7 @@ export class DataService {
     }
 
     updateItem(dataItem: DataItem): void {
-        this.items[dataItem.id - 1] = dataItem;
+        this.items.filter((item) => item.id === dataItem.id)[0] = dataItem;
     }
 
     addItem(dataItem: DataItem): void {
