@@ -3,6 +3,7 @@ import { NativeScriptCommonModule } from "nativescript-angular/common";
 
 import { AccountRoutingModule } from "./account-routing.module";
 import { AccountComponent } from "./account.component";
+import { TimetableComponent } from './timetable/timetable.component';
 
 @NgModule({
     imports: [
@@ -10,7 +11,8 @@ import { AccountComponent } from "./account.component";
         AccountRoutingModule
     ],
     declarations: [
-        AccountComponent
+        AccountComponent,
+        TimetableComponent
     ],
     schemas: [
         NO_ERRORS_SCHEMA

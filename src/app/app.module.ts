@@ -3,7 +3,6 @@ import { NativeScriptModule } from "nativescript-angular/nativescript.module";
 
 import { AppRoutingModule } from "./app-routing.module";
 import { AppComponent } from "./app.component";
-import { TimetableComponent } from './shared/components/timetable/timetable.component';
 
 @NgModule({
     bootstrap: [
@@ -14,8 +13,7 @@ import { TimetableComponent } from './shared/components/timetable/timetable.comp
         AppRoutingModule
     ],
     declarations: [
-        AppComponent,
-        TimetableComponent
+        AppComponent
     ],
     schemas: [
         NO_ERRORS_SCHEMA

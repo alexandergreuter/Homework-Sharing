@@ -6,7 +6,8 @@ import { NativeScriptRouterModule } from "nativescript-angular/router";
 const routes: Routes = [
     {
         path: "",
-        redirectTo: "/(homeTab:home/default//newTab:new/default//accountTab:account/default)",
+        redirectTo:
+            "/(homeTab:home/default//newTab:new/default//accountTab:account/default)",
         pathMatch: "full"
     },
 
