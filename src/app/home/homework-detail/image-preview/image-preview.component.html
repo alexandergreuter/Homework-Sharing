@@ -1,0 +1,11 @@
+<ActionBar>
+    <NavigationButton (tap)="navigateBack()" android.systemIcon="ic_menu_back"></NavigationButton>
+    <Label [text]="item.name"></Label>
+</ActionBar>
+
+<GridLayout>
+    <ScrollView orientation="horizontal">
+        <Image width="100%" [src]="item.image.src"
+               stretch="aspectFit"></Image>
+    </ScrollView>
+</GridLayout>

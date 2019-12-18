@@ -6,8 +6,8 @@
 
     <ListView [items]="items">
         <ng-template let-item="item">
-            <StackLayout>
-                <Label [nsRouterLink]="['../item', item.id]" [text]="item.name"></Label>
+            <StackLayout (tap)="onItemTap(item.id)">
+                <Label [text]="item.name"></Label>
                 <label *ngIf="item.due !== undefined" [text]="item.due"></label>
             </StackLayout>
         </ng-template>
