@@ -1,0 +1,16 @@
+<stack-layout class="card" orientation="vertical">
+    <Label [text]="day.id" class="card-title"></Label>
+
+    <stack-layout class="card-group">
+        <StackLayout (tap)="onTimeFieldTap(field)" *ngFor="let field of day.timeFields" [backgroundColor]="field.color"
+                     class="card-group-item" orientation="horizontal">
+            <stack-layout orientation="vertical">
+                <Label [text]="field.start | timeFormat"></Label>
+                <Label [text]="field.end | timeFormat"></Label>
+            </stack-layout>
+            <label *ngIf="field.subject !== undefined" [text]="field.subject"></label>
+        </StackLayout>
+    </stack-layout>
+</stack-layout>
+
+

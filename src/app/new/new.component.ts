@@ -2,7 +2,6 @@ import { Component, OnInit } from "@angular/core";
 import { DataItem, DataService } from "~/app/shared/data.service";
 import { requestPermissions, takePicture } from "nativescript-camera";
 import { ImageAsset } from "tns-core-modules/image-asset";
-import { Image } from "tns-core-modules/ui/image";
 
 @Component({
     selector: "New",
@@ -10,7 +9,7 @@ import { Image } from "tns-core-modules/ui/image";
 })
 export class NewComponent implements OnInit {
 
-    item: DataItem = this.intialItem();
+    item: DataItem = this._data.initializeEmptyItem();
     saveToGallery: boolean = false;
 
     constructor(private _data: DataService) {
@@ -23,17 +22,7 @@ export class NewComponent implements OnInit {
 
     save(): void {
         this._data.addItem(this.item);
-        this.item = this.intialItem();
-    }
-
-    intialItem(): DataItem {
-        return {
-            id: 0,
-            name: "",
-            description: "",
-            due: new Date(),
-            image: new Image()
-        };
+        this.item = this._data.initializeEmptyItem();
     }
 
     onTakePictureTap(args) {

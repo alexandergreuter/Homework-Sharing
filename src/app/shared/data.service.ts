@@ -1,5 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Image } from "tns-core-modules/ui/image";
+import { Subject } from "~/app/shared/timetable.service";
 
 export interface DataItem {
     id: number;
@@ -9,6 +10,7 @@ export interface DataItem {
     // Todo this shouldn't be optional when firebase get's added is only there so I don't have to change the mock Data
     image?: Image;
     // Todo this shouldn't be optional eighter
+    subject?: Subject;
 }
 
 @Injectable({
@@ -127,12 +129,22 @@ export class DataService {
         return this.items.filter((item) => item.id === id)[0];
     }
 
-    updateItem(dataItem: DataItem): void {
-        this.items.filter((item) => item.id === dataItem.id)[0] = dataItem;
+    initializeEmptyItem(): DataItem {
+        return {
+            id: 0,
+            name: "",
+            description: "",
+            due: new Date(),
+            image: new Image()
+        };
     }
 
     addItem(dataItem: DataItem): void {
         dataItem.id = this.items.length + 1;
         this.items.push(dataItem);
+    }
+
+    updateItem(dataItem: DataItem): void {
+        this.items.filter((item) => item.id === dataItem.id)[0] = dataItem;
     }
 }

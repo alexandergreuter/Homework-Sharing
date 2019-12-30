@@ -7,18 +7,22 @@ import { AccountComponent } from "./account.component";
 import { TimetableComponent } from "./timetable/timetable.component";
 import { TimefieldDetailComponent } from "./timetable/timefield-detail/timefield-detail.component";
 import { TimeFormatPipe } from "~/app/shared/timetable.service";
+import { CommonModule } from "@angular/common";
+import { DayPreviewComponent } from './timetable/day-preview/day-preview.component';
 
 @NgModule({
     imports: [
         NativeScriptCommonModule,
+        NativeScriptFormsModule,
         AccountRoutingModule,
-        NativeScriptFormsModule
+        CommonModule
     ],
     declarations: [
         AccountComponent,
         TimetableComponent,
         TimefieldDetailComponent,
-        TimeFormatPipe
+        TimeFormatPipe,
+        DayPreviewComponent
     ],
     schemas: [
         NO_ERRORS_SCHEMA
