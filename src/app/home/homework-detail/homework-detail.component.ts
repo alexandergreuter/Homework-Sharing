@@ -4,6 +4,7 @@ import { RouterExtensions } from "nativescript-angular/router";
 import * as dialogs from "tns-core-modules/ui/dialogs";
 
 import { DataItem, DataService } from "../../shared/data.service";
+import { ImageSource } from "@nativescript/core/image-source";
 
 @Component({
     selector: "Detail",
@@ -11,7 +12,6 @@ import { DataItem, DataService } from "../../shared/data.service";
 })
 export class HomeworkDetailComponent implements OnInit {
     item: DataItem;
-    changes: DataItem;
     changed = false;
 
     constructor(
@@ -23,14 +23,9 @@ export class HomeworkDetailComponent implements OnInit {
 
     ngOnInit(): void {
         const id = +this._route.snapshot.params.id;
-        // Todo: Google: WTF does this plus do, everything breaks if removed.
-        this.item = this._data.getItem(id);
-        this.changes = {
-            id: this.item.id,
-            name: this.item.name,
-            description: this.item.description,
-            due: this.item.due
-        };
+        // Todo Google: WTF does this plus do, everything breaks if removed.
+        // Hack but who even cares
+        this.item = this._data.getItem(this._route.toString().substr(16, 20));
     }
 
     navigateBack(): void {
@@ -57,8 +52,12 @@ export class HomeworkDetailComponent implements OnInit {
         }
     }
 
+    getImage(): ImageSource {
+        return ImageSource.fromFileSync(this.item.image);
+    }
+
     save(): void {
-        this._data.updateItem(this.changes);
+        this._data.updateItem(this.item);
         dialogs.alert("Changes saved successfully");
         this._routerExtensions.back();
     }

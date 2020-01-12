@@ -11,16 +11,24 @@ import { ActivatedRoute } from "@angular/router";
 export class HomeComponent implements OnInit {
     items: Array<DataItem>;
 
-    constructor(private _itemService: DataService,
+    constructor(private _items: DataService,
                 private _route: ActivatedRoute,
                 private _routerExtensions: RouterExtensions) {
     }
 
-    ngOnInit(): void {
-        this.items = this._itemService.getItems();
+    onItemTap(id: string) {
+        this._routerExtensions.navigate(["../item", id], {relativeTo: this._route});
     }
 
-    onItemTap(id: number) {
-        this._routerExtensions.navigate(["../item", id], {relativeTo: this._route});
+    ngOnInit(): void {
+        // hack but I don't have the time to make it properly
+        this._items.getItems();
+        setTimeout(() => {
+            this.items = this._items.getItems();
+        }, 1000);
+    }
+
+    refresh() {
+        this.items = this._items.getItems();
     }
 }

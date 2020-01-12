@@ -10,9 +10,9 @@
                 <TextField [(ngModel)]="item.name" hint="Homework..."></TextField>
                 <TextField [(ngModel)]="item.description" hint="Description..."></TextField>
                 <DatePicker [date]="item.due" minDate="1970-01-01" maxDate="2100-12-31"></DatePicker>
-                <Image *ngIf="item.image.src !== undefined" height="100" width="100" [src]="item.image.src"
+                <Image *ngIf="item.image !== ''" height="100" width="100" [src]="getImage()"
                        stretch="fill"></Image>
-                <Image *ngIf="item.image.src === undefined" height="100" width="100" src="font://&#xf030;"
+                <Image *ngIf="item.image === ''" height="100" width="100" src="font://&#xf030;"
                        (tap)="onTakePictureTap()" class="fas t-36"></Image>
             </StackLayout>
         </ScrollView>

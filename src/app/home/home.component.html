@@ -3,14 +3,17 @@
 </ActionBar>
 
 <GridLayout>
+    <StackLayout orientation="vertical">
+        <button text="reload" (tap)="refresh()" height="10%"></button>
 
-    <ListView [items]="items">
-        <ng-template let-item="item">
-            <StackLayout (tap)="onItemTap(item.id)">
-                <Label [text]="item.name"></Label>
-                <label *ngIf="item.due !== undefined" [text]="item.due"></label>
-            </StackLayout>
-        </ng-template>
-    </ListView>
+        <ListView [items]="items" height="90%">
+            <ng-template let-item="item">
+                <StackLayout (tap)="onItemTap(item.id)">
+                    <Label [text]="item.name"></Label>
+                    <label *ngIf="item.due !== undefined" [text]="item.due"></label>
+                </StackLayout>
+            </ng-template>
+        </ListView>
+    </StackLayout>
 
 </GridLayout>

@@ -6,12 +6,14 @@ import { HomeRoutingModule } from "./home-routing.module";
 import { HomeComponent } from "./home.component";
 import { HomeworkDetailComponent } from "./homework-detail/homework-detail.component";
 import { ImagePreviewComponent } from "./homework-detail/image-preview/image-preview.component";
+import { CommonModule } from "@angular/common";
 
 @NgModule({
     imports: [
         NativeScriptCommonModule,
         NativeScriptFormsModule,
-        HomeRoutingModule
+        HomeRoutingModule,
+        CommonModule
     ],
     declarations: [
         HomeComponent,

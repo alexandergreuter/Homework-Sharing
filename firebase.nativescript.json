@@ -1,7 +1,7 @@
 {
     "using_ios": false,
     "using_android": true,
-    "analytics": false,
+    "analytics": true,
     "firestore": true,
     "realtimedb": false,
     "authentication": false,
@@ -11,7 +11,7 @@
     "messaging": false,
     "in_app_messaging": false,
     "crashlytics": false,
-    "storage": false,
+    "storage": true,
     "functions": false,
     "facebook_auth": false,
     "google_auth": false,

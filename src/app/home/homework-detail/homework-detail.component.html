@@ -6,9 +6,9 @@
 <GridLayout>
     <DockLayout stretchLastChild="false">
         <stack-layout orientation="vertical" dock="top" padding="10">
-            <TextField [(ngModel)]="changes.description" (tap)="changed = true" hint="Add Description"></TextField>
+            <TextField [(ngModel)]="item.description" (tap)="changed = true" hint="Add Description"></TextField>
             <Label [text]="item.due"></Label>
-            <Image *ngIf="item.image !== undefined" height="100" width="100" [src]="item.image.src"
+            <Image *ngIf="item.image !== ''" height="100" width="100" [src]="getImage()"
                    stretch="fill" (tap)="previewImage()"></Image>
         </stack-layout>
         <stack-layout *ngIf="changed" orientation="horizontal" dock="bottom">

@@ -2,6 +2,12 @@ import { Component, OnInit } from "@angular/core";
 import { DataItem, DataService } from "~/app/shared/data.service";
 import { requestPermissions, takePicture } from "nativescript-camera";
 import { ImageAsset } from "tns-core-modules/image-asset";
+import { Image } from "tns-core-modules/ui/image";
+import * as dialogs from "tns-core-modules/ui/dialogs";
+import { ImageSource } from "@nativescript/core/image-source/image-source";
+import { knownFolders, path } from "tns-core-modules/file-system/file-system";
+
+var imageSource = require("image-source");
 
 @Component({
     selector: "New",
@@ -9,7 +15,13 @@ import { ImageAsset } from "tns-core-modules/image-asset";
 })
 export class NewComponent implements OnInit {
 
-    item: DataItem = this._data.initializeEmptyItem();
+    item: DataItem = {
+        id: "",
+        name: "",
+        description: "",
+        due: new Date(),
+        image: ""
+    };
     saveToGallery: boolean = false;
 
     constructor(private _data: DataService) {
@@ -21,11 +33,25 @@ export class NewComponent implements OnInit {
     }
 
     save(): void {
-        this._data.addItem(this.item);
-        this.item = this._data.initializeEmptyItem();
+        if (this.item.name === "" || this.item.description === "") {
+            dialogs.alert("Make sure to fill in all values");
+        } else {
+            this._data.addItem(this.item);
+            this.item = {
+                id: "",
+                name: "",
+                description: "",
+                due: new Date(),
+                image: ""
+            };
+        }
     }
 
-    onTakePictureTap(args) {
+    getImage(): ImageSource {
+        return ImageSource.fromFileSync(this.item.image);
+    }
+
+    onTakePictureTap() {
         requestPermissions().then(
             () => this.capture(),
             () => alert("permissions rejected")
@@ -33,9 +59,28 @@ export class NewComponent implements OnInit {
     }
 
     capture() {
+
+        let asset;
         takePicture({width: 250, height: 300, keepAspectRatio: true, saveToGallery: this.saveToGallery})
             .then((imageAsset: ImageAsset) => {
-                this.item.image.src = imageAsset;
+                asset = imageAsset;
+
+                ImageSource.fromAsset(asset)
+                    .then((imgSource: ImageSource) => {
+                        const folderPath: string = knownFolders.documents().path;
+                        // stupid hack but got no time to fix
+                        const fileName: string = Math.random().toString(36).substring(2, 15)
+                            + Math.random().toString(36).substring(2, 15) + ".jpg";
+                        const filePath: string = path.join(folderPath, fileName);
+                        const saved: boolean = imgSource.saveToFile(filePath, "jpg");
+
+                        if (saved) {
+                            this.item.image = filePath;
+                            console.log("Saved: " + filePath);
+                            console.log("Image saved successfully!");
+                        }
+                    });
+
             }, (error) => {
                 console.log("Error: " + error);
             });
