@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "737962635434",
+    "firebase_url": "https://homework-shareing.firebaseio.com",
+    "project_id": "homework-shareing",
+    "storage_bucket": "homework-shareing.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:737962635434:android:d306b2659b67dcd27f60d3",
+        "android_client_info": {
+          "package_name": "org.nativescript.homework"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "737962635434-rigvs55fqu3riiamhsf6ll6cvv7qq1pj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDtSBxnfjWjaTjyjBdp3zVn9u-G3F9uTiM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "737962635434-rigvs55fqu3riiamhsf6ll6cvv7qq1pj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
